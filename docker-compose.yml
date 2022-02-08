@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  # Name of app 'app'
+  app:
+    build:
+      # context is this file .
+      context: .
+    ports:
+    # map local port:docker port
+      - "8000:8000"
+    volumes:
+    # map the app directory of project to docker container
+      - ./app:/app
+    command: >
+      sh -c "python manage.py runserver 0.0.0.0:8000"
+      
+# run with 'docker-compose build'      
